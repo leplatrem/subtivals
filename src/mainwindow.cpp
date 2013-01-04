@@ -155,6 +155,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_filewatcher, SIGNAL(fileChanged(QString)), this, SLOT(fileChanged(QString)));
     m_timerFileChange.setSingleShot(true);
     connect(&m_timerFileChange, SIGNAL(timeout()), this, SLOT(reloadScript()));
+
+    QMessageBox msgBox;
+    msgBox.setIconPixmap(QPixmap(":/icons/subtivals.svg"));
+    msgBox.setText(tr("<b>Subtivals</b> %1, <b>demo</b> version.<br>"
+                      "Projection limited to 30 subtitles</b>.").arg(VERSION));
+    msgBox.exec();
 }
 
 MainWindow::~MainWindow()
